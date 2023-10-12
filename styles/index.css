@@ -1,0 +1,18 @@
+
+
+#arena{
+
+    border: 1px solid #000;
+
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+
+img{
+    object-fit: cover;
+}
