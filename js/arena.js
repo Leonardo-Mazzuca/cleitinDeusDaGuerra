@@ -1,7 +1,6 @@
 (function () {
     const arena = document.querySelector('#arena');
     const ctx = arena.getContext('2d');
-    let contadorColisoes = 0;
 
     const r2d2Image = new Image();
     const roboR2D2 = new Robo('BB-8',885, 180, r2d2Image, 5, ctx, arena);
@@ -96,18 +95,6 @@
             }
         });
 
-        function determinarVencedor(robo1, robo2){
-
-
-            if(robo1.vida > robo2.vida){
-                return robo1;
-            } else if (robo2.vida > robo1.vida){
-                return robo2;
-            }
-              
-
-        }
-
 
         function animar() {
             ctx.clearRect(0, 0, arena.width, arena.height);
@@ -115,11 +102,16 @@
             roboR2D2.movimentarRoboDaEsquerda();
 
             roboBB8.reconheceColisao(roboR2D2);
-
+            roboBB8.reconheceRoboVencedor(roboR2D2);
+            roboBB8.mostrarVidaNaTela(roboR2D2);
+            roboBB8.mostrarDadosNoFinal(roboR2D2);
+     
             roboBB8.desenharRobo();
             roboR2D2.desenharRobo();
-            requestAnimationFrame(animar);
+            window.requestAnimationFrame(animar,ctx);
         }
+       
+        
 
         animar();
     };
